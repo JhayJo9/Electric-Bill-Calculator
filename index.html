@@ -126,7 +126,7 @@
         <div class="form-page1">
           <form class="needs-validation" id="formPage1" novalidate>
             <div class="form-group">
-              <label for="validationCustomNumUsers">Enter how many persons that use your electric/Meralco</label>
+              <label for="validationCustomNumUsers">Enter the number of people who use your electric or Meralco services.</label>
               <input type="number" class="form-control" id="validationCustomNumUsers" placeholder="Enter value" required>
               <div class="invalid-feedback">
                 Please enter a valid number.
@@ -230,7 +230,7 @@
                   </div>
                 </div>
               </div>
-              <button class="btn btn-primary" type="submit">Submit form</button>
+              <button id="submitForm" class="btn btn-primary" type="submit">Submit form</button>
             </form>
           </div>
         `;
@@ -248,22 +248,23 @@
             form.classList.add('was-validated');
           } else {
             const name = document.getElementById(`validationCustomName${index}`).value;
-const prevReading = parseFloat(document.getElementById(`validationCustomPrevReading${index}`).value);
-const currReading = parseFloat(document.getElementById(`validationCustomCurrReading${index}`).value);
-const sub = currReading - prevReading;
-const result = (sub * 15).toFixed(1);  // Round to 1 decimal place
-const resultSub = document.getElementById(`validationCustomActualCons${index}`);
-const resultLabel = document.getElementById(`result${index}`);
+            const prevReading = parseFloat(document.getElementById(`validationCustomPrevReading${index}`).value);
+            const currReading = parseFloat(document.getElementById(`validationCustomCurrReading${index}`).value);
+            const sub = currReading - prevReading;
+            const result = (sub * 15).toFixed(1);  // Round to 1 decimal place
+            const resultSub = document.getElementById(`validationCustomActualCons${index}`);
+            const resultLabel = document.getElementById(`result${index}`);
 
-resultSub.value = sub.toFixed(1);  // Round to 1 decimal place
-resultLabel.textContent = result;
-
+            resultSub.value = sub.toFixed(1);  // Round to 1 decimal place
+            resultLabel.textContent = result;
+            
             addResultToTable(name, result);
             calculateTotalResult();
             form.classList.add('was-validated');
-
+            
+            document.getElementById('submitForm').disabled = false;
               // Enable the button when at least one form is filled
-              document.getElementById('showResultsButton').disabled = false;
+            document.getElementById('showResultsButton').disabled = false;
           }
         }, false);  
       });
