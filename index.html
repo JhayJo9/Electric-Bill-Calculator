@@ -251,7 +251,7 @@
             const prevReading = parseFloat(document.getElementById(`validationCustomPrevReading${index}`).value);
             const currReading = parseFloat(document.getElementById(`validationCustomCurrReading${index}`).value);
             const sub = currReading - prevReading;
-            const result = (sub * 15).toFixed(1);  // Round to 1 decimal place
+            const result = (sub * 20).toFixed(1);  // Round to 1 decimal place
             const resultSub = document.getElementById(`validationCustomActualCons${index}`);
             const resultLabel = document.getElementById(`result${index}`);
 
